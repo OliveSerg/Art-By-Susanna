@@ -1,0 +1,22 @@
+{
+  "name": "wp-artbysusanna",
+  "version": "1.0.0",
+  "description": "Art By Susanna",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "foundation-icon-fonts": "^0.1.1",
+    "foundation-sites": "https://github.com/zurb/foundation-sites.git#develop",
+    "gulp-minify": "^2.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "motion-ui": "^1.2.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
