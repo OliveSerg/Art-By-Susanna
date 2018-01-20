@@ -13,7 +13,7 @@
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-            <?php echo 'hey' ?>
+            <?php echo 'hey theres no styles' ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 	<?php get_sidebar(); ?>
