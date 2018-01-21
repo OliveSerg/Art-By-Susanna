@@ -1615,6 +1615,7 @@
   animation-delay: 700ms !important; }
 
 /* Color Palette */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0; }

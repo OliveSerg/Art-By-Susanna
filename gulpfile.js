@@ -2,6 +2,7 @@ let gulp = require('gulp'),
     sass = require('gulp-sass'),
     minify = require('gulp-minify'),
     uglify = require('gulp-uglify'),
+    bless = require('gulp-bless'),
     themePath = 'wp-content/themes/artbysusanna';
 
 function exceptionLog(error) {
@@ -15,6 +16,7 @@ gulp.task('styles', function() {
             style: 'expanded',
             includePaths: ['node_modules/foundation-sites/scss', 'node_modules/foundation-icon-fonts', 'node_modules/motion-ui']
         }))
+        .pipe(bless())
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(themePath))
 });
