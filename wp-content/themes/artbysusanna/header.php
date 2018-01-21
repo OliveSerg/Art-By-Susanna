@@ -11,22 +11,31 @@
 
 <body <?php body_class(); ?>>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#content">
-			<?php _e('Skip to content', 'twentyseventeen'); ?>
-		</a>
-
 		<header id="masthead" class="site-header" role="banner">
 
-			<?php //get_template_part( 'template-parts/header/header', 'image' );?>
 			<?php if (has_nav_menu('header')) : ?>
 			<div class="navigation-top">
-				<div class="wrap">
+				<nav id="header-nav" class="header-nav">
+					<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
+						<span class="icon-toggle"></span>
+					</button>
+
 					<?php wp_nav_menu([
 						'theme_location' => 'header',
 						'menu_id' => 'main',
 					]); ?>
-				</div>
+				</nav>
 			</div>
 			<?php endif; ?>
+
+			<div class="header-logo">
+				<?php
+					if (has_custom_logo()) {
+						the_custom_logo();
+					} else {
+						echo '<h1>' . get_bloginfo('name') . '</h1>';
+					}
+				?>
+			</div>
 
 		</header>

@@ -19,6 +19,7 @@ get_header();
 		<div class="about-container">
 			<?php $aboutImage = get_field('about_image'); ?>
 			<img src="<?php echo $aboutImage['sizes']['medium']; ?>" alt="<?php echo $aboutImage['alt'] ?: $aboutImage['title']; ?>">
+			<?php the_content(); ?>
 		</div>
 		<div class="gallery-container">
 
