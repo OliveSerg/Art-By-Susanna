@@ -17,7 +17,8 @@ get_header();
 		<?php if (have_posts()) :?>
 		<?php while (have_posts()) : the_post(); ?>
 		<div class="about-container">
-			<img src="<?php echo get_field('about_image')['sizes']['large']; ?>" alt="">
+			<?php $aboutImage = get_field('about_image'); ?>
+			<img src="<?php echo $aboutImage['sizes']['medium']; ?>" alt="<?php echo $aboutImage['alt'] ?: $aboutImage['title']; ?>">
 		</div>
 		<div class="gallery-container">
 
