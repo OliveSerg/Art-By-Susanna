@@ -44,6 +44,6 @@ wp-content/*
 /sitemap.xml.gz
 
 wp-content/themes/twenty*/
-wp-content/themes/artbysusanna/style.css
+wp-content/themes/artbysusanna/style*.css
 wp-content/themes/artbysusanna/scripts*.js
 node_modules/
