@@ -10,24 +10,24 @@ function exceptionLog(error) {
     this.emit('end');
 };
 
-gulp.task('styles', function() {
+gulp.task('styles', function () {
     return gulp.src(themePath + '/assets/css/style.scss')
         .pipe(sass({
             style: 'expanded',
-            includePaths: ['node_modules/foundation-sites/scss', 'node_modules/foundation-icon-fonts', 'node_modules/motion-ui']
+            includePaths: ['node_modules/foundation-sites/scss', 'node_modules/ionicons/dist/scss', 'node_modules/motion-ui', 'node_modules/ionicons/dist/scss']
         }))
         .pipe(bless())
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(themePath))
 });
 
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
     return gulp.src(themePath + '/assets/js/scripts.js')
         .pipe(minify())
         .pipe(uglify())
         .pipe(gulp.dest(themePath));
 });
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     gulp.start('styles', 'scripts')
 });

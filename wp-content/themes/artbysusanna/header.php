@@ -11,10 +11,10 @@
 
 <body <?php body_class(); ?>>
 	<div id="page" class="site">
-		<header id="masthead" class="site-header" role="banner">
+		<header id="masthead" class="main-header" role="banner">
 
 			<?php if (has_nav_menu('header')) : ?>
-			<div class="navigation-top">
+			<div class="header-nav-container">
 				<nav id="header-nav" class="header-nav">
 					<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
 						<span class="icon-toggle"></span>

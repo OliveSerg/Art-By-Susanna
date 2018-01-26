@@ -1,0 +1,26 @@
+@mixin header-open-styles() {
+    .header-nav-container {
+        .menu-toggle {
+            &::before {
+                @include ionicons-icon('.ion-md-close')
+            }
+        }
+    }
+}
+
+@mixin header-styles() {
+    .main-header {
+        position: relative;
+    }
+    .header-nav-container {
+        position: absolute;
+        @include header-open-styles();
+        .menu-toggle {
+            .icon-toggle {
+                &:before {
+                    @include ionicons-icon('.ion-md-menu');
+                }
+            }
+        }
+    }
+}

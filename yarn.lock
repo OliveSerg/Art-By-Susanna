@@ -674,10 +674,6 @@ format-number@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/format-number/-/format-number-2.0.2.tgz#8be2aa6fa6ef5ec43830892b1daee72705f9b462"
 
-foundation-icon-fonts@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/foundation-icon-fonts/-/foundation-icon-fonts-0.1.1.tgz#097bca3e017b81846b54146d37bc17615ccdd20e"
-
 "foundation-sites@https://github.com/zurb/foundation-sites.git#develop":
   version "6.4.3"
   resolved "https://github.com/zurb/foundation-sites.git#8214b56e0637acd50d6c181c0f0ee08641c7fe37"
@@ -1153,6 +1149,10 @@ interpret@^1.0.0:
 invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
+
+ionicons@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-3.0.0.tgz#40b8daf4fd7a31150bd002160f66496e22a98c3c"
 
 is-absolute@^1.0.0:
   version "1.0.0"
