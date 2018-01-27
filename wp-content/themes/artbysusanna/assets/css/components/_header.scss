@@ -1,8 +1,11 @@
 @mixin header-open-styles() {
-    .header-nav-container.menu-open {
+    &.menu-open {
+        right: 0;
         .menu-toggle {
-            &::before {
-                @include ionicons-icon('.ion-md-close')
+            .icon-toggle {
+                &:before {
+                    @include ionicons-icon('.ion-md-close')
+                }
             }
         }
     }
@@ -10,10 +13,13 @@
 
 @mixin header-styles() {
     .main-header {
-        position: relative;
+        position: fixed;
     }
     .header-nav-container {
         position: absolute;
+        top: 0;
+        right: 100%;
+        @include header-open-styles();
         .menu-toggle {
             .icon-toggle {
                 &:before {
@@ -22,5 +28,4 @@
             }
         }
     }
-    @include header-open-styles();
 }

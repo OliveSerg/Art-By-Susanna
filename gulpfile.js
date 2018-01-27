@@ -23,7 +23,9 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src(['node_modules/jquery/dist/jquery.js', themePath + '/assets/js/*.js'])
+    return gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/foundation-sites/dist/js/foundation.js',
+            themePath + '/assets/js/*.js'
+        ])
         .pipe(concat('scripts.js'))
         .pipe(gulp.dest(themePath));
 });
