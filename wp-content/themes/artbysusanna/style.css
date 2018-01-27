@@ -1,4 +1,4 @@
-@import url("style-blessed1.css?z=664");
+@import url("style-blessed1.css?z=563");
 .is-dropdown-submenu > li {
   width: 100%; }
 
@@ -1420,14 +1420,3 @@ a.thumbnail image {
 
 .header-nav-container {
   position: absolute; }
-
-.header-nav-container .menu-toggle .icon-toggle:before {
-  font-family: "Ionicons";
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  text-decoration: inherit; }

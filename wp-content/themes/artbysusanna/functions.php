@@ -32,5 +32,6 @@ add_action('after_setup_theme', 'artbysusanna_setup');
 function artbysusanna_scripts()
 {
 	wp_enqueue_style('artbysusanna-style', get_stylesheet_uri());
+	wp_enqueue_script('artbysusanna-script', get_theme_file_uri('/scripts.js'));
 }
 add_action('wp_enqueue_scripts', 'artbysusanna_scripts');

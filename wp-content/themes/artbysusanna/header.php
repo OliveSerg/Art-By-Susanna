@@ -14,18 +14,16 @@
 		<header id="masthead" class="main-header" role="banner">
 
 			<?php if (has_nav_menu('header')) : ?>
-			<div class="header-nav-container">
-				<nav id="header-nav" class="header-nav">
-					<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
-						<span class="icon-toggle"></span>
-					</button>
+			<nav id="header-nav" class="header-nav-container">
+				<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
+					<span class="icon-toggle"></span>
+				</button>
 
-					<?php wp_nav_menu([
+				<?php wp_nav_menu([
 						'theme_location' => 'header',
 						'menu_id' => 'main',
 					]); ?>
-				</nav>
-			</div>
+			</nav>
 			<?php endif; ?>
 
 			<div class="header-logo">

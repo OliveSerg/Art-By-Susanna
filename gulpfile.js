@@ -3,6 +3,7 @@ let gulp = require('gulp'),
     minify = require('gulp-minify'),
     uglify = require('gulp-uglify'),
     bless = require('gulp-bless'),
+    concat = require('gulp-concat'),
     themePath = 'wp-content/themes/artbysusanna';
 
 function exceptionLog(error) {
@@ -22,9 +23,8 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src(themePath + '/assets/js/scripts.js')
-        .pipe(minify())
-        .pipe(uglify())
+    return gulp.src(['node_modules/jquery/dist/jquery.js', themePath + '/assets/js/*.js'])
+        .pipe(concat('scripts.js'))
         .pipe(gulp.dest(themePath));
 });
 

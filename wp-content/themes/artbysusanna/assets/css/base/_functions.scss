@@ -1,12 +1,3 @@
 @mixin ionicons-icon($icon) {
-    font-family: $ionicons-font-family;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    text-decoration: inherit;
     @extend #{$icon};
 }
