@@ -12,20 +12,16 @@
 }
 
 @mixin header-styles() {
-    .main-header {
+    .header-main {
         position: fixed;
-    }
-    .header-nav-container {
-        position: absolute;
-        top: 0;
-        right: 100%;
-        @include header-open-styles();
-        .menu-toggle {
-            .icon-toggle {
-                &:before {
-                    @include ionicons-icon('.ion-md-menu');
-                }
-            }
+        width: 100%;
+        .nav-menu-mobile {
+            @include off-canvas-base;
+            @include off-canvas-position(right, horizontal);
+            @include hide-for('large');
+        }
+        .menu-icon {
+            @include hide-for('large');
         }
     }
 }

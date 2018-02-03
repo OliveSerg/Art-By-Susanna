@@ -1,4 +1,6 @@
 $(function() {
+    $(document)
+        .foundation();
     (function initNavMenu() {
         var headerNav = $('#header-nav'),
             menuButton = headerNav.find('.menu-toggle');

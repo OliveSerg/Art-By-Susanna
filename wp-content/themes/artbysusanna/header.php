@@ -10,30 +10,44 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div id="page" class="site">
-		<header id="masthead" class="main-header" role="banner">
-
+	<div id="page" class="page-wrapper off-canvas-wrapper">
+		<header class="header-main" data-off-canvas-wrapper>
 			<?php if (has_nav_menu('header')) : ?>
-			<nav id="header-nav" class="header-nav-container">
-				<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
-					<span class="icon-toggle"></span>
-				</button>
-
+			<div class="nav-menu-mobile" id="nav-menu-off-canvas" data-position="right" data-transition="overlay" data-off-canvas>
 				<?php wp_nav_menu([
-						'theme_location' => 'header',
-						'menu_id' => 'main',
-					]); ?>
-			</nav>
+                        'theme_location' => 'header',
+                        'menu_id'        => 'main',
+                        'menu_class'     => 'vertical menu'
+                    ]); ?>
+			</div>
 			<?php endif; ?>
 
-			<div class="header-logo">
-				<?php
-					if (has_custom_logo()) {
-						the_custom_logo();
-					} else {
-						echo '<h1>' . get_bloginfo('name') . '</h1>';
-					}
-				?>
-			</div>
+			<div class="off-canvas-content" data-off-canvas-content>
+				<div class="title-bar">
+					<div class="title-bar-left">
+						<div class="header-logo">
+							<?php
+                                if (!has_custom_logo()) {
+                                    the_custom_logo();
+                                } else {
+                                    echo '<h1>' . get_bloginfo('name') . '</h1>';
+                                }
+                            ?>
+						</div>
+					</div>
+					<div class="title-bar-right">
+						<button class="menu-icon" type="button" data-open="nav-menu-off-canvas"></button>
+						<?php if (has_nav_menu('header')) : ?>
+						<div class="nav-menu-desktop">
+							<?php wp_nav_menu([
+                                'theme_location' => 'header',
+                                'menu_id'        => 'main',
+                                'menu_class'     => 'menu'
+                            ]); ?>
+						</div>
+						<?php endif; ?>
 
+					</div>
+				</div>
+			</div>
 		</header>

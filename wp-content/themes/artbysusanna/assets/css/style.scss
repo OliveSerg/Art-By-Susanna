@@ -6,23 +6,20 @@
     Version: 0.0.1
 */
 
-
 /* Vendor */
 
 @import 'settings/settings.scss';
 @import 'foundation';
 @import 'fonts/ionicons.scss';
 @import 'motion-ui';
-
 /* Base */
 
 @import 'base/variables.scss';
 @import 'base/functions.scss';
-
 /* Components */
 
+@import 'components/global.scss';
 @import 'components/header.scss';
-
 /* Includes */
 
 @include foundation-global-styles;
