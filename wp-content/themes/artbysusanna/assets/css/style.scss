@@ -7,23 +7,22 @@
 */
 
 /* Vendor */
-
 @import 'settings/settings.scss';
 @import 'foundation';
 @import 'fonts/ionicons.scss';
 @import 'motion-ui';
-/* Base */
 
+/* Base */
 @import 'base/variables.scss';
 @import 'base/functions.scss';
-/* Components */
 
+/* Components */
 @import 'components/global.scss';
 @import 'components/header.scss';
-/* Includes */
 
+/* Vendor Includes */
 @include foundation-global-styles;
-@include foundation-xy-grid-classes;
+//@include foundation-xy-grid-classes;
 @include foundation-grid;
 @include foundation-flex-grid;
 @include foundation-flex-classes;
@@ -62,4 +61,6 @@
 @include foundation-top-bar;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
+
+/* Includes */
 @include header-styles();

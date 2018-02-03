@@ -23,19 +23,17 @@
 			<?php endif; ?>
 
 			<div class="off-canvas-content" data-off-canvas-content>
-				<div class="title-bar">
-					<div class="title-bar-left">
-						<div class="header-logo">
-							<?php
-                                if (!has_custom_logo()) {
-                                    the_custom_logo();
-                                } else {
-                                    echo '<h1>' . get_bloginfo('name') . '</h1>';
-                                }
-                            ?>
-						</div>
+				<div class="header-bar">
+					<div class="header-logo">
+						<?php
+                            if (!has_custom_logo()) {
+                                the_custom_logo();
+                            } else {
+                                echo '<h1>' . get_bloginfo('name') . '</h1>';
+                            }
+                        ?>
 					</div>
-					<div class="title-bar-right">
+					<div class="header-nav-container">
 						<button class="menu-icon" type="button" data-open="nav-menu-off-canvas"></button>
 						<?php if (has_nav_menu('header')) : ?>
 						<div class="nav-menu-desktop">

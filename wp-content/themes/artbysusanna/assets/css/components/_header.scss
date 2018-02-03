@@ -4,7 +4,7 @@
         .menu-toggle {
             .icon-toggle {
                 &:before {
-                    @include ionicons-icon('.ion-md-close')
+                    @include ionicons-icon(".ion-md-close");
                 }
             }
         }
@@ -18,10 +18,10 @@
         .nav-menu-mobile {
             @include off-canvas-base;
             @include off-canvas-position(right, horizontal);
-            @include hide-for('large');
+            @include hide-for("large");
         }
         .menu-icon {
-            @include hide-for('large');
+            @include hide-for("large");
         }
     }
 }
