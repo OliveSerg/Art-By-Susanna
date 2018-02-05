@@ -1,8 +1,8 @@
 let gulp = require('gulp'),
     sass = require('gulp-sass'),
-    minify = require('gulp-minify'),
-    uglify = require('gulp-uglify'),
     bless = require('gulp-bless'),
+    cssnano = require('gulp-cssnano'),
+    autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     themePath = 'wp-content/themes/artbysusanna';
 
@@ -25,7 +25,50 @@ gulp.task('styles', function() {
                 ]
             })
         )
+        .pipe(
+            autoprefixer({
+                browsers: ['last 2 versions', 'ie >= 10', 'ios >= 9'],
+                remove: false,
+                cascade: false
+            })
+        )
         .pipe(bless())
+        .pipe(
+            cssnano({
+                zindex: false,
+                autoprefixer: false,
+                calc: false,
+                colormin: false,
+                convertValues: false,
+                discardComments: true,
+                discardDuplicates: false,
+                discardEmpty: false,
+                discardOverridden: false,
+                discardUnused: false,
+                mergeIdents: false,
+                mergeLonghand: false,
+                mergeRules: false,
+                minifyFontValues: false,
+                minifyGradients: false,
+                minifyParams: false,
+                minifySelectors: false,
+                normalizeCharset: false,
+                normalizeDisplayValues: false,
+                normalizePositions: false,
+                normalizeRepeatStyle: false,
+                normalizeString: false,
+                normalizeTimingFunctions: false,
+                normalizeUnicode: false,
+                normalizeUrl: false,
+                normalizeWhitespace: false,
+                orderedValues: false,
+                reduceIdents: false,
+                reduceInitial: false,
+                reduceTransforms: false,
+                svgo: false,
+                uniqueSelectors: false
+            })
+        )
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(themePath));
 });
