@@ -7,13 +7,12 @@
 */
 
 /* Vendor */
-@import 'settings/settings.scss';
 @import 'foundation';
 @import 'fonts/ionicons.scss';
 @import 'motion-ui';
 
 /* Base */
-@import 'base/variables.scss';
+@import 'base/settings.scss';
 @import 'base/functions.scss';
 
 /* Components */
