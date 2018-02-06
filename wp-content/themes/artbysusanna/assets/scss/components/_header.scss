@@ -16,6 +16,10 @@
         position: fixed;
         width: 100%;
 
+        .header-bar {
+            @include top-bar-container();
+        }
+
         .nav-menu-mobile {
             @include off-canvas-base;
             @include off-canvas-position(right, horizontal);
@@ -23,6 +27,10 @@
         }
         .menu-icon {
             @include hide-for('large');
+        }
+
+        .nav-menu-desktop {
+            @include show-for('large');
         }
     }
 }
