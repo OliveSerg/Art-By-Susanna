@@ -1,29 +1,19 @@
-</div>
+<footer class="site-footer" role="contentinfo">
+	<div class="footer-top">
 
-<footer id="colophon" class="site-footer" role="contentinfo">
-    <div class="wrap">
-        <?php
-		get_template_part('template-parts/footer/footer', 'widgets');
-
-		if (has_nav_menu('social')) : ?>
-            <nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e('Footer Social Links Menu', 'twentyseventeen'); ?>">
-                <?php
-					wp_nav_menu([
-						'theme_location' => 'social',
-						'menu_class' => 'social-links-menu',
-						'depth' => 1,
-						'link_before' => '<span class="screen-reader-text">',
-						'link_after' => '</span>' . twentyseventeen_get_svg(['icon' => 'chain']),
-					]);
-				?>
-            </nav>
-            <?php endif;
-
-		get_template_part('template-parts/footer/site', 'info');
-		?>
-    </div>
+	</div>
+	<div class="footer-bottom">
+		<p>&copy;
+			<script>
+				document.write((new Date).getFullYear());
+			</script>
+			<?php echo get_bloginfo('name') . __('. All Rights Reserved.'); ?>
+		</p>
+		<p>Development by
+			<a href="mailto:oliveserg@gmail.com?subject=Web Development Enquiry" target="_top">oliveserg@gmail.com</a>
+		</p>
+	</div>
 </footer>
-</div>
 </div>
 <?php wp_footer(); ?>
 
