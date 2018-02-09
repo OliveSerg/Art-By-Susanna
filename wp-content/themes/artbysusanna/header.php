@@ -10,7 +10,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div id="page" class="page-wrapper off-canvas-wrapper">
+	<div id="page" class="page-wrapper">
 		<header class="header-main" data-off-canvas-wrapper>
 			<?php if (has_nav_menu('header')) : ?>
 			<div class="nav-menu-mobile" id="nav-menu-off-canvas" data-position="right" data-transition="overlay" data-off-canvas>

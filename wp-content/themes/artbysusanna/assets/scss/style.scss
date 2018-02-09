@@ -18,6 +18,7 @@
 /* Components */
 @import 'components/global.scss';
 @import 'components/header.scss';
+@import 'components/footer.scss';
 
 /* Vendor Includes */
 @include foundation-global-styles;
@@ -62,4 +63,6 @@
 @include foundation-float-classes;
 
 /* Includes */
-@include header-styles();
+@include apply-global-styles();
+@include apply-header-styles();
+@include apply-footer-styles();

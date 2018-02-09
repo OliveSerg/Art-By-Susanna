@@ -1,17 +1,4 @@
-@mixin header-open-styles() {
-    &.menu-open {
-        right: 0;
-        .menu-toggle {
-            .icon-toggle {
-                &:before {
-                    @include ionicons-icon('.ion-md-close');
-                }
-            }
-        }
-    }
-}
-
-@mixin header-styles() {
+@mixin apply-header-styles() {
     .header-main {
         position: fixed;
         width: 100%;

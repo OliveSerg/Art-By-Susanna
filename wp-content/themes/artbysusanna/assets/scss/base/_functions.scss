@@ -1,3 +1,11 @@
 @mixin ionicons-icon($icon) {
     @extend #{$icon};
 }
+
+@mixin get-padding($padding-map) {
+    @each $breakpoint, $padding in $padding-map {
+        @include breakpoint($breakpoint) {
+            padding: $padding;
+        }
+    }
+}

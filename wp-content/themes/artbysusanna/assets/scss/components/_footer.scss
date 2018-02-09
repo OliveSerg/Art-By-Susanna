@@ -1,0 +1,11 @@
+@mixin apply-footer-styles() {
+    .site-footer {
+        background-color: get-color('primary');
+
+        @include get-padding($grid-container-padding);
+
+        p {
+            margin: 0;
+        }
+    }
+}
