@@ -1,31 +1,45 @@
 <footer class="site-footer" role="contentinfo">
 	<div class="footer-top">
-		<div class="footer-contact">
+		<div class="footer-left">
+			<?php if (is_active_sidebar('footer-left')) : ?>
+			<?php dynamic_sidebar('footer-left');?>
+			<?php endif; ?>
 			<h3>
 				<?php echo __('Get In Touch'); ?>
 			</h3>
 			<p>
 				<?php echo __('Got a special request or need more information?'); ?>
 			</p>
-			<dl>
-				<dt>
-					<?php echo __('Phone:');?>
-				</dt>
-				<dd>
-					<?php echo __('123-456-7890'); ?>
-				</dd>
-				<dt>
-					<?php echo __('Email:'); ?>
-				</dt>
-				<dd>
-					<?php echo __('email'); ?>
-				</dd>
-			</dl>
+			<table class="footer-contact-details">
+
+				<body>
+					<tr>
+						<td class="detail-title">
+							<?php echo __('Phone:');?>
+						</td>
+						<td class="detail-content">
+							<?php echo __('123-456-7890'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-title">
+							<?php echo __('Email:'); ?>
+						</td>
+						<td class="detail-content">
+							<?php echo __('email'); ?>
+						</td>
+					</tr>
+				</body>
+			</table>
 		</div>
+		<?php if (is_active_sidebar('footer-right')) : ?>
+		<?php dynamic_sidebar('footer-right');?>
+		<?php endif; ?>
+
 		<?php if (has_nav_menu('footer')) : ?>
-		<div class="footer-links">
+		<div class="footer-right">
 			<h3>
-				<?php echo __('Other Places'); ?>
+				<?php echo __('Places To Checkout'); ?>
 			</h3>
 			<?php wp_nav_menu([
                         'theme_location' => 'footer',
@@ -44,7 +58,7 @@
 		</p>
 		<p>
 			<?php echo __('Development by'); ?>
-			<a href="mailto:oliveserg@gmail.com?subject=Web Development Enquiry" target="_top">oliveserg@gmail.com</a>
+			<a href="mailto:oliveserg@gmail.com?subject=Web Development Enquiry" target="_top">S.Oliveira</a>
 		</p>
 	</div>
 </footer>
