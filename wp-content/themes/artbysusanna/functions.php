@@ -32,54 +32,6 @@ function artbysusanna_setup()
     }
 
     add_theme_support('customize-selective-refresh-widgets');
-
-    $starter_content = [
-        'widgets' => [
-            // Add the core-defined business info widget to the footer 1 area.
-            'footer-left' => [
-                'text_business_info',
-            ],
-
-            // Put two core-defined widgets in the footer 2 area.
-            'footer-right' => [
-                'text_about',
-                'search',
-            ],
-        ],
-
-        // // Default to a static front page and assign the front and posts pages.
-        // 'options' => [
-        //     'show_on_front'  => 'page',
-        //     'page_on_front'  => '{{home}}',
-        //     'page_for_posts' => '{{blog}}',
-        // ],
-
-        // // Set the front page section theme mods to the IDs of the core-registered pages.
-        // 'theme_mods' => [
-        //     'panel_1' => '{{homepage-section}}',
-        //     'panel_2' => '{{about}}',
-        //     'panel_3' => '{{blog}}',
-        //     'panel_4' => '{{contact}}',
-        // ],
-
-        // // Set up nav menus for each of the two areas registered in the theme.
-        // 'nav_menus' => [
-        //     // Assign a menu to the "top" location.
-        //     'top' => [
-        //         'name'  => __('Top Menu', 'artbysusanna'),
-        //         'items' => [
-        //             'link_home', // Note that the core "home" page is actually a link in case a static front page is not used.
-        //             'page_about',
-        //             'page_blog',
-        //             'page_contact',
-        //         ],
-        //     ],
-        // ],
-    ];
-
-    $starter_content = apply_filters('artbysusanna_starter_content', $starter_content);
-
-    add_theme_support('starter-content', $starter_content);
 }
 add_action('after_setup_theme', 'artbysusanna_setup');
 
@@ -90,33 +42,87 @@ function artbysusanna_scripts()
 }
 add_action('wp_enqueue_scripts', 'artbysusanna_scripts');
 
-function artbysusanna_widgets_init()
-{
-    register_sidebar([
-        'name'          => __('Footer Left', 'artbysusanna'),
-        'id'            => 'footer-left',
-        'description'   => __('Add widgets here to appear in right left side of your footer.', 'artbysusanna'),
-        'before_title'  => '<h3 class="footer-title">',
-        'after_title'   => '</h3>',
-    ]);
+// function artbysusanna_assign_widget($sidebar, $widgetId, $widgetData = [])
+// {
+//     $sidebarsWidgets = get_option('sidebars_widgets', []);
+//     $widgetInstances = get_option('widget_' . $widgetId, []);
 
-    register_sidebar([
-        'name'          => __('Footer Right', 'artbysusanna'),
-        'id'            => 'footer-right',
-        'description'   => __('Add widgets here to appear in the right side of your footer.', 'artbysusanna'),
-        'before_title'  => '<h3 class="footer-title">',
-        'after_title'   => '</h3>',
-    ]);
+//     $numericKeys = array_filter(array_keys($widgetInstances), 'is_int');
+//     $nextKey     = $numericKeys ? max($numericKeys) + 1 : 2;
+
+//     if (!isset($sidebarsWidgets[$sidebar])) {
+//         $sidebarsWidgets[$sidebar] = [];
+//     }
+
+//     $sidebarsWidgets[$sidebar][] = $widgetId . '-' . $nextKey;
+//     $widgetInstances[$nextKey]   = $widgetData;
+//     var_dump($widgetInstances);
+//     update_option('sidebars_widgets', $sidebarsWidgets);
+//     update_option('widget_' . $widgetId, $widgetInstances);
+// }
+
+// function artbysusanna_widgets_init()
+// {
+//     register_sidebar([
+//         'name'          => __('Footer Left', 'artbysusanna'),
+//         'id'            => 'footer-left',
+//         'description'   => __('Add widgets here to appear in right left side of your footer.', 'artbysusanna'),
+//         'before_title'  => '<h3 class="footer-title">',
+//         'after_title'   => '</h3>',
+//     ]);
+//     artbysusanna_assign_widget('footer-left', 'contactInfo', ['text' => 'This works!\n\nAmazing!']);
+
+//     register_sidebar([
+//         'name'          => __('Footer Right', 'artbysusanna'),
+//         'id'            => 'footer-right',
+//         'description'   => __('Add widgets here to appear in the right side of your footer.', 'artbysusanna'),
+//         'before_title'  => '<h3 class="footer-title">',
+//         'after_title'   => '</h3>',
+//     ]);
+// }
+// add_action('widgets_init', 'artbysusanna_widgets_init');
+function register_site_config_settings()
+{
+    register_setting('site-configurations', 'contact_email');
+    register_setting('site-configurations', 'contact_phone');
 }
-add_action('widgets_init', 'artbysusanna_widgets_init');
+
+function artbysusanna_site_config_content()
+{
+    ?>
+    <div class="wrap">
+        <h1>Site Configurations</h1>
+        <form method="post" action="options.php">
+            <?php wp_nonce_field('update-options') ?>
+            <?php register_site_config_settings(); ?>
+            <p>
+                <strong>
+                    <?php echo __('Contact Email:'); ?>
+                </strong>
+                <br />
+                <input type="email" name="contact_email" value="<?php echo esc_attr(get_option('contact_email')); ?>" />
+            </p>
+            <p>
+                <strong>
+                    <?php echo __('Contact Phone Number:'); ?>
+                </strong>
+                <br />
+                <input type="tel" name="contact_phone" value="<?php echo esc_attr(get_option('contact_phone')); ?>" />
+            </p>
+            <?php submit_button(); ?>
+        </form>
+    </div>
+    <?php
+}
 
 function artbysusanna_admin_pages_init()
 {
     add_options_page(
-    'Site Configurations',
-    'Site Configurations',
-    '8',
-    'site-configs.php'
+        'Site Configurations',
+        'Site Configurations',
+        '8',
+        'site-configurations',
+        'artbysusanna_site_config_content'
     );
 }
 add_action('admin_menu', 'artbysusanna_admin_pages_init');

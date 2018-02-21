@@ -1,9 +1,6 @@
 <footer class="site-footer" role="contentinfo">
 	<div class="footer-top">
 		<div class="footer-left">
-			<?php if (is_active_sidebar('footer-left')) : ?>
-			<?php dynamic_sidebar('footer-left');?>
-			<?php endif; ?>
 			<h3>
 				<?php echo __('Get In Touch'); ?>
 			</h3>
@@ -13,29 +10,33 @@
 			<table class="footer-contact-details">
 
 				<body>
+					<?php if ($phone = get_option('contact_phone')) :?>
 					<tr>
 						<td class="detail-title">
 							<?php echo __('Phone:');?>
 						</td>
 						<td class="detail-content">
-							<?php echo __('123-456-7890'); ?>
+							<a href="tel:<?php echo $phone; ?>">
+								<?php echo $phone; ?>
+							</a>
 						</td>
 					</tr>
+					<?php endif; ?>
+					<?php if ($email = get_option('contact_email')) :?>
 					<tr>
 						<td class="detail-title">
 							<?php echo __('Email:'); ?>
 						</td>
 						<td class="detail-content">
-							<?php echo __('email'); ?>
+							<a href="mailto:<?php echo $email; ?>">
+								<?php echo $email; ?>
+							</a>
 						</td>
 					</tr>
+					<?php endif; ?>
 				</body>
 			</table>
 		</div>
-		<?php if (is_active_sidebar('footer-right')) : ?>
-		<?php dynamic_sidebar('footer-right');?>
-		<?php endif; ?>
-
 		<?php if (has_nav_menu('footer')) : ?>
 		<div class="footer-right">
 			<h3>
@@ -43,7 +44,7 @@
 			</h3>
 			<?php wp_nav_menu([
                         'theme_location' => 'footer',
-                        'menu_id'        => 'footer-links',
+                        'menu_id'        => 'footer-social',
                         'menu_class'     => 'vertical menu'
                     ]); ?>
 		</div>
@@ -58,7 +59,9 @@
 		</p>
 		<p>
 			<?php echo __('Development by'); ?>
-			<a href="mailto:oliveserg@gmail.com?subject=Web Development Enquiry" target="_top">S.Oliveira</a>
+			<a href="mailto:oliveserg@gmail.com?subject=Web Development Enquiry" target="_top">
+				<?php echo __('S.Oliveira'); ?>
+			</a>
 		</p>
 	</div>
 </footer>
