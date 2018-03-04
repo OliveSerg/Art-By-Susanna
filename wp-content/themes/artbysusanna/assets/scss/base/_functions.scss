@@ -1,0 +1,11 @@
+@mixin ionicons-icon($icon) {
+    @extend #{$icon};
+}
+
+@mixin get-padding($padding-map: $grid-padding-gutters) {
+    @each $breakpoint, $padding in $padding-map {
+        @include breakpoint($breakpoint) {
+            padding: $padding;
+        }
+    }
+}

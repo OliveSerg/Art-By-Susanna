@@ -1,0 +1,26 @@
+@mixin apply-global-styles() {
+    .page-wrapper {
+        @include off-canvas-wrapper;
+    }
+}
+
+@mixin details-table() {
+    width: auto;
+
+    tbody {
+        border: none;
+        background-color: initial;
+
+        tr:nth-child(even) {
+            background-color: initial;
+        }
+
+        td {
+            padding: 0;
+        }
+
+        .detail-title {
+            padding-right: rem-calc(6);
+        }
+    }
+}

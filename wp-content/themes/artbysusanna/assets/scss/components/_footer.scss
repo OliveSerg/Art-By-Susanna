@@ -1,0 +1,50 @@
+@mixin apply-footer-styles() {
+    .site-footer {
+        p {
+            margin: 0;
+        }
+
+        .footer-top-wrapper {
+            background-color: scale-color(
+                get-color('secondary'),
+                $lightness: 14%
+            );
+        }
+
+        .footer-bottom-wrapper {
+            background-color: get-color('secondary');
+        }
+
+        .footer-top,
+        .footer-bottom {
+            @include flex-grid-row();
+            @each $breakpoint, $padding in $grid-padding-gutters {
+                @include breakpoint($breakpoint) {
+                    padding-top: rem-calc($padding) / 2;
+                    padding-bottom: rem-calc($padding) / 2;
+                }
+            }
+        }
+
+        .footer-left,
+        .footer-right {
+            @include flex-grid-column(100%);
+
+            @include breakpoint('large') {
+                @include flex-grid-column(50%);
+            }
+        }
+
+        .footer-contact-details {
+            @include details-table();
+        }
+
+        .footer-bottom-text {
+            @include flex-grid-column(100%);
+
+            @include breakpoint('large') {
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js no-svg">
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
 
-<?php wp_head(); ?>
+<head>
+    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>;
+charset=<?php bloginfo('charset'); ?>" />
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <title>
+        <?php if (function_exists('is_tag') && is_tag()) {
+    single_tag_title('Tag Archive for &quot;');
+    echo '&quot; - ';
+} elseif (is_archive()) {
+    wp_title('');
+    echo ' Archive - ';
+} elseif (is_search()) {
+    echo 'Search for &quot;' . wp_specialchars($s) . '&quot; - ';
+} elseif (!(is_404()) && (is_single()) || (is_page())) {
+    wp_title('');
+    echo ' - ';
+} elseif (is_404()) {
+    echo 'Not Found - ';
+}
+        if (is_home()) {
+            bloginfo('name');
+            echo ' - ';
+            bloginfo('description');
+        } else {
+            bloginfo('name');
+        }
+        if ($paged > 1) {
+            echo ' - page ' . $paged;
+        } ?>
+    </title>
+
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyseventeen' ); ?></a>
+    <div id="page" class="page-wrapper">
+        <header id="header-main" class="header-main at-top" data-off-canvas-wrapper>
+            <?php if (has_nav_menu('header')) : ?>
+            <div class="nav-menu-mobile" id="nav-menu-off-canvas" data-position="right" data-transition="overlay" data-off-canvas>
+                <?php wp_nav_menu([
+                        'theme_location' => 'header',
+                        'menu_id'        => 'main',
+                        'menu_class'     => 'vertical menu'
+                    ]); ?>
+            </div>
+            <?php endif; ?>
 
-	<header id="masthead" class="site-header" role="banner">
+            <div class="off-canvas-content" data-off-canvas-content>
+                <div class="header-bar">
+                    <div class="header-logo">
+                        <?php
+                            if (has_custom_logo()) {
+                                the_custom_logo();
+                            } else {
+                                echo '<h1>' . get_bloginfo('name') . '</h1>';
+                            }
+                        ?>
+                    </div>
+                    <div class="header-nav-container">
+                        <button class="menu-icon" type="button" data-open="nav-menu-off-canvas"></button>
+                        <?php if (has_nav_menu('header')) : ?>
+                        <div class="nav-menu-desktop">
+                            <?php wp_nav_menu([
+                                'theme_location' => 'header',
+                                'menu_id'        => 'main',
+                                'menu_class'     => 'menu'
+                            ]); ?>
+                        </div>
+                        <?php endif; ?>
 
-		<?php get_template_part( 'template-parts/header/header', 'image' ); ?>
-
-		<?php if ( has_nav_menu( 'top' ) ) : ?>
-			<div class="navigation-top">
-				<div class="wrap">
-					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>
-				</div>
-			</div>
-		<?php endif; ?>
-
-	</header>
-
-	<?php
-
-	/*
-	 * If a regular post or page, and not the front page, show the featured image.
-	 * Using get_queried_object_id() here since the $post global may not be set before a call to the_post().
-	 */
-	if ( ( is_single() || ( is_page() && ! twentyseventeen_is_frontpage() ) ) && has_post_thumbnail( get_queried_object_id() ) ) :
-		echo '<div class="single-featured-image-header">';
-		echo get_the_post_thumbnail( get_queried_object_id(), 'twentyseventeen-featured-image' );
-		echo '</div><!-- .single-featured-image-header -->';
-	endif;
-	?>
-
-	<div class="site-content-contain">
-		<div id="content" class="site-content">
+                    </div>
+                </div>
+            </div>
+        </header>

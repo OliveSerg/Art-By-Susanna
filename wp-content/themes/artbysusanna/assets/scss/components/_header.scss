@@ -1,0 +1,35 @@
+@mixin apply-header-styles() {
+    .header-main {
+        position: fixed;
+        width: 100%;
+        background-color: get-color('primary');
+        transition: background-color 0.5s ease-out;
+
+        &.at-top {
+            background-color: transparent;
+        }
+
+        .header-bar {
+            @include top-bar-container();
+        }
+
+        .nav-menu-mobile {
+            @include off-canvas-base;
+            @include off-canvas-position(right, horizontal);
+            @include hide-for('large');
+        }
+        .menu-icon {
+            @include hide-for('large');
+        }
+
+        .nav-menu-desktop {
+            @include show-for('large');
+        }
+
+        .header-logo {
+            .custom-logo {
+                max-height: rem-calc(40);
+            }
+        }
+    }
+}
