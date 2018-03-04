@@ -6,13 +6,13 @@
 
         .footer-top-wrapper {
             background-color: scale-color(
-                get-color('primary'),
+                get-color('secondary'),
                 $lightness: 14%
             );
         }
 
         .footer-bottom-wrapper {
-            background-color: get-color('primary');
+            background-color: get-color('secondary');
         }
 
         .footer-top,
