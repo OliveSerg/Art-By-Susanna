@@ -61,10 +61,7 @@
 				<?php echo get_bloginfo('name') . __('. All Rights Reserved.'); ?>
 			</p>
 			<p class="footer-bottom-text">
-				<?php echo __('Development by'); ?>
-				<a href="mailto:oliveserg@gmail.com?subject=Web Development Enquiry" target="_top">
-					<?php echo __('S.Oliveira'); ?>
-				</a>
+				<?php echo __('Development by S.Oliveira'); ?>
 			</p>
 		</div>
 	</div>

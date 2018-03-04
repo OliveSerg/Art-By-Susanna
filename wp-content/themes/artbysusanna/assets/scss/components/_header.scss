@@ -19,5 +19,11 @@
         .nav-menu-desktop {
             @include show-for('large');
         }
+
+        .header-logo {
+            .custom-logo {
+                max-height: rem-calc(40);
+            }
+        }
     }
 }
