@@ -19,6 +19,7 @@
 @import 'components/global.scss';
 @import 'components/header.scss';
 @import 'components/footer.scss';
+@import 'components/front-page.scss';
 
 /* Vendor Includes */
 @include foundation-global-styles;
@@ -66,3 +67,4 @@
 @include apply-global-styles();
 @include apply-header-styles();
 @include apply-footer-styles();
+@include apply-front-page-styles();

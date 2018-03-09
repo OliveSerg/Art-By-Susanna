@@ -6,8 +6,7 @@ get_header();
 	<?php if (have_posts()) :?>
 	<?php while (have_posts()) : the_post(); ?>
 	<div class="header-image">
-		<?php $headerImage = get_field('header_image'); ?>
-		<img src="<?php echo $headerImage['url']; ?>" alt="<?php echo $headerImage['alt'] ?: $headerImage['title']; ?>">
+		<?php the_post_thumbnail(); ?>
 	</div>
 
 	<?php endwhile; ?>
@@ -17,9 +16,14 @@ get_header();
 		<?php if (have_posts()) :?>
 		<?php while (have_posts()) : the_post(); ?>
 		<div class="about-container">
-			<?php $aboutImage = get_field('about_image'); ?>
-			<img src="<?php echo $aboutImage['sizes']['medium']; ?>" alt="<?php echo $aboutImage['alt'] ?: $aboutImage['title']; ?>">
-			<?php the_content(); ?>
+			<?php if ($aboutImage = get_field('about_image')) : ?>
+			<div class="about-image">
+				<img src="<?php echo $aboutImage['sizes']['large']; ?>" alt="<?php echo $aboutImage['alt'] ?: $aboutImage['title']; ?>">
+			</div>
+			<?php endif; ?>
+			<div class="about-content">
+				<?php the_content(); ?>
+			</div>
 		</div>
 		<div class="gallery-container">
 
