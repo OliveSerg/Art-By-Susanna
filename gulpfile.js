@@ -11,7 +11,7 @@ function exceptionLog(error) {
     this.emit('end');
 }
 
-gulp.task('styles', function() {
+gulp.task('styles', function () {
     return gulp
         .src(themePath + '/assets/scss/style.scss')
         .pipe(
@@ -21,7 +21,8 @@ gulp.task('styles', function() {
                     'node_modules/foundation-sites/scss',
                     'node_modules/ionicons/dist/scss',
                     'node_modules/motion-ui',
-                    'node_modules/ionicons/dist/scss'
+                    'node_modules/ionicons/dist/scss',
+                    'node_modules/swiper/dist/css'
                 ]
             })
         )
@@ -73,17 +74,23 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(themePath));
 });
 
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
     return gulp
         .src([
             'node_modules/jquery/dist/jquery.js',
             'node_modules/foundation-sites/dist/js/foundation.js',
+            'node_modules/swiper/dist/js/swiper.js',
             themePath + '/assets/js/*.js'
         ])
         .pipe(concat('scripts.js'))
         .pipe(gulp.dest(themePath));
 });
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     gulp.start('styles', 'scripts');
 });
+
+gulp.task('watch', function () {
+    gulp.watch(themePath + '/assets/scss/**/*.scss');
+    gulp.watch(themePath + '/assets/js/*.js');
+})

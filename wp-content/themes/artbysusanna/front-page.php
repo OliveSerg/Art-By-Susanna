@@ -25,21 +25,29 @@ get_header();
 				<?php the_content(); ?>
 			</div>
 		</div>
-		<div class="gallery-container">
-			<?php $the_query = new WP_Query('tag=Featured');
-                if ($the_query->have_posts()) {
-                    echo '<ul>';
-                    while ($the_query->have_posts()) {
-                        $the_query->the_post();
-                        echo '<li>' . get_the_title() . '</li>';
-                    }
-                    echo '</ul>';
-                } else {
-                    // no posts found
-                }
-                wp_reset_postdata();
-            ?>
+
+		<?php $the_query = new WP_Query('tag=Featured'); if ($the_query->have_posts()) : ?>
+		<div id="home-page-feauted-posts" class="swiper-container">
+			<div class="swiper-wrapper">
+				<?php while ($the_query->have_posts()) : $the_query->the_post();?>
+				<div class="swiper-slide">
+					<?php echo get_the_title(); ?>
+				</div>
+				<?php endwhile; ?>
+			</div>
+			<div class="swiper-pagination"></div>
+
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+
+			<div class="swiper-scrollbar"></div>
 		</div>
+		<script>
+			$(function() {
+				var homeSwiper = new Swiper('#home-page-feauted-posts');
+			});
+		</script>
+		<?php endif; wp_reset_postdata();?>
 		<?php endwhile; ?>
 		<?php endif;?>
 	</main>
