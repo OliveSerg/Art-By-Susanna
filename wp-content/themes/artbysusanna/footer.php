@@ -9,9 +9,10 @@
 					<?php echo __('Got a special request or need more information?'); ?>
 				</p>
 				<table class="footer-contact-details">
+					<?php $siteOptions = get_option('site_configurations'); ?>
 
 					<body>
-						<?php if ($phone = get_option('contact_phone')) :?>
+						<?php if ($phone = $siteOptions['contact_phone']) :?>
 						<tr>
 							<td class="detail-title">
 								<?php echo __('Phone:');?>
@@ -23,7 +24,7 @@
 							</td>
 						</tr>
 						<?php endif; ?>
-						<?php if ($email = get_option('contact_email')) :?>
+						<?php if ($email = $siteOptions['contact_email']) :?>
 						<tr>
 							<td class="detail-title">
 								<?php echo __('Email:'); ?>

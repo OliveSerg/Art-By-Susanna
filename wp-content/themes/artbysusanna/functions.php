@@ -81,48 +81,8 @@ add_action('wp_enqueue_scripts', 'artbysusanna_scripts');
 //     ]);
 // }
 // add_action('widgets_init', 'artbysusanna_widgets_init');
-function register_site_config_settings()
-{
-    register_setting('site-configurations', 'contact_email');
-    register_setting('site-configurations', 'contact_phone');
-}
+if (is_admin()) {
+    require 'SiteConfigurationsPage.php';
 
-function artbysusanna_site_config_content()
-{
-    ?>
-    <div class="wrap">
-        <h1>Site Configurations</h1>
-        <form method="post" action="options.php">
-            <?php wp_nonce_field('update-options') ?>
-            <?php register_site_config_settings(); ?>
-            <p>
-                <strong>
-                    <?php echo __('Contact Email:'); ?>
-                </strong>
-                <br />
-                <input type="email" name="contact_email" value="<?php echo esc_attr(get_option('contact_email')); ?>" />
-            </p>
-            <p>
-                <strong>
-                    <?php echo __('Contact Phone Number:'); ?>
-                </strong>
-                <br />
-                <input type="tel" name="contact_phone" value="<?php echo esc_attr(get_option('contact_phone')); ?>" />
-            </p>
-            <?php submit_button(); ?>
-        </form>
-    </div>
-    <?php
+    new SiteConfigurationsPage();
 }
-
-function artbysusanna_admin_pages_init()
-{
-    add_options_page(
-        'Site Configurations',
-        'Site Configurations',
-        '8',
-        'site-configurations',
-        'artbysusanna_site_config_content'
-    );
-}
-add_action('admin_menu', 'artbysusanna_admin_pages_init');
