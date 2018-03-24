@@ -26,7 +26,19 @@ get_header();
 			</div>
 		</div>
 		<div class="gallery-container">
-
+			<?php $the_query = new WP_Query('tag=Featured');
+                if ($the_query->have_posts()) {
+                    echo '<ul>';
+                    while ($the_query->have_posts()) {
+                        $the_query->the_post();
+                        echo '<li>' . get_the_title() . '</li>';
+                    }
+                    echo '</ul>';
+                } else {
+                    // no posts found
+                }
+                wp_reset_postdata();
+            ?>
 		</div>
 		<?php endwhile; ?>
 		<?php endif;?>

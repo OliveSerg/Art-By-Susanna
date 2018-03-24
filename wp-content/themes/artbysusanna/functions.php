@@ -42,45 +42,6 @@ function artbysusanna_scripts()
 }
 add_action('wp_enqueue_scripts', 'artbysusanna_scripts');
 
-// function artbysusanna_assign_widget($sidebar, $widgetId, $widgetData = [])
-// {
-//     $sidebarsWidgets = get_option('sidebars_widgets', []);
-//     $widgetInstances = get_option('widget_' . $widgetId, []);
-
-//     $numericKeys = array_filter(array_keys($widgetInstances), 'is_int');
-//     $nextKey     = $numericKeys ? max($numericKeys) + 1 : 2;
-
-//     if (!isset($sidebarsWidgets[$sidebar])) {
-//         $sidebarsWidgets[$sidebar] = [];
-//     }
-
-//     $sidebarsWidgets[$sidebar][] = $widgetId . '-' . $nextKey;
-//     $widgetInstances[$nextKey]   = $widgetData;
-//     var_dump($widgetInstances);
-//     update_option('sidebars_widgets', $sidebarsWidgets);
-//     update_option('widget_' . $widgetId, $widgetInstances);
-// }
-
-// function artbysusanna_widgets_init()
-// {
-//     register_sidebar([
-//         'name'          => __('Footer Left', 'artbysusanna'),
-//         'id'            => 'footer-left',
-//         'description'   => __('Add widgets here to appear in right left side of your footer.', 'artbysusanna'),
-//         'before_title'  => '<h3 class="footer-title">',
-//         'after_title'   => '</h3>',
-//     ]);
-//     artbysusanna_assign_widget('footer-left', 'contactInfo', ['text' => 'This works!\n\nAmazing!']);
-
-//     register_sidebar([
-//         'name'          => __('Footer Right', 'artbysusanna'),
-//         'id'            => 'footer-right',
-//         'description'   => __('Add widgets here to appear in the right side of your footer.', 'artbysusanna'),
-//         'before_title'  => '<h3 class="footer-title">',
-//         'after_title'   => '</h3>',
-//     ]);
-// }
-// add_action('widgets_init', 'artbysusanna_widgets_init');
 if (is_admin()) {
     require 'SiteConfigurationsPage.php';
 
